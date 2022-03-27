@@ -23,6 +23,9 @@ namespace XSunriseSunset
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -82,6 +85,11 @@ namespace XSunriseSunset
             pkrState.ItemsSource = states;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSubmit_Clicked(object sender, EventArgs e)
         {
             
@@ -94,6 +102,12 @@ namespace XSunriseSunset
                 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="city"></param>
+        /// <param name="state"></param>
+        /// <param name="country"></param>
         private async void ReadGEOAPIAsync(string city, string state, string country)
         {            
             string twoCharState = state.Substring(state.Length - 2);
@@ -101,7 +115,7 @@ namespace XSunriseSunset
             
             using (HttpClient client = new HttpClient())
             {
-                string restAPI = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "," + twoCharState + "," + twoCharCountry + "&limit=5&appid=70a389759cde3cbd0e38bcf1792cbbcc";
+                string restAPI = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "," + twoCharState + "," + twoCharCountry + "&limit=5&appid={YOUR API KEY}";
                 
                 var response2 = await client.GetAsync(restAPI);
                 string json2 = await response2.Content.ReadAsStringAsync();
@@ -169,12 +183,7 @@ namespace XSunriseSunset
                 }
 
                 //=============================================================
-
-
-
-
-
             } // end using
-        }
-    }
-}
+        }//end ReadGEOAPIAsync
+    }//end class AddCity
+}//end namespace

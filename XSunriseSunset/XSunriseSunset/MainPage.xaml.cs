@@ -11,6 +11,9 @@ using Xamarin.Forms;
 /// </summary>
 namespace XSunriseSunset
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class MainPage : ContentPage
     {
         public static List<Location> myLocations = new List<Location>();
@@ -20,6 +23,9 @@ namespace XSunriseSunset
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -37,22 +43,32 @@ namespace XSunriseSunset
                 {
                     _ = DisplayAlert("Error", "No response from SQLite Database - " + ex.Message, "OK");
                 }
-                
-            }                                  
+
+            }//end OnAppearing                                  
 
             lstLocations.ItemsSource = myLocations;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstLocations_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             Location loc = (Location)e.Item;
             App.loc = loc;
             Navigation.PushAsync(new SunriseSunset());
-        }
+        }//end lstLocations_ItemTapped
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddCity_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new AddCity());
         }
-    }
-}
+    }//end MainPage
+}//end namespace

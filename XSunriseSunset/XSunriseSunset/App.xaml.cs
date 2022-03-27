@@ -14,6 +14,9 @@ namespace XSunriseSunset
         public static string DatabaseLocation = string.Empty;
         public static Location loc;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public App()
         {
             InitializeComponent();
@@ -21,6 +24,10 @@ namespace XSunriseSunset
             MainPage = new NavigationPage( new MainPage());
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dbLocation"></param>
         public App(string dbLocation)
         {
             InitializeComponent();

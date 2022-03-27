@@ -22,23 +22,23 @@ namespace XSunriseSunset
             ReadAPIAsync();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private async void ReadAPIAsync()
         {
             var lat = App.loc.latitude;
             var lng = App.loc.longtitude;
             var name = App.loc.name;
 
-            //await DisplayAlert("Location", "You have a location", "Ok");
             using (HttpClient client = new HttpClient())
             {
                 try
                 {
-
                     //Current Date, API can only do one date at a time, not a range
                     DateTime now = DateTime.Now;
                     string date = now.ToString("yyyy-MM-dd");
-
-                    //var response2 = await client.GetAsync("https://api.sunrise-sunset.org/json?lat=36.577387&lng=-82.239352&date=" + date);
+                    
                     var response2 = await client.GetAsync("https://api.sunrise-sunset.org/json?lat=" + lat + "&lng=" + lng + "=" + date);
                     var json2 = await response2.Content.ReadAsStringAsync();
 
@@ -69,8 +69,13 @@ namespace XSunriseSunset
                     _ = DisplayAlert("Error", "No response from API call. - " + ex.Message, "OK");
                 }
             } // end using
-        }
+        }// end ReadAPIAsync
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDeleteCity_Clicked(object sender, EventArgs e)
         {
             int rowsDeleted = 0;
@@ -87,6 +92,6 @@ namespace XSunriseSunset
                 _ = DisplayAlert("Error", "Location could not be found in the database.", "OK");
 
             Navigation.PopAsync();
-        }
-    }
-}
+        }//end btnDeleteCity_Clicked
+    }//end SunriseSunset
+}//end namespace
